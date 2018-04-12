@@ -94,7 +94,9 @@ public class CitationManagerGUI extends JPanel
     // Lay Out the Tools on a JFrame
     setLayout(new FlowLayout());
     add(sortByAuthorButton);
+    sortByAuthorButton.setEnabled(false);
     add(sortByTypeButton);
+    sortByTypeButton.setEnabled(false);
     
     add(listArea);
     
@@ -102,6 +104,7 @@ public class CitationManagerGUI extends JPanel
     //add(selectSourceText);
     add(selectSourceCombo);
     add(getNoteButton);
+    getNoteButton.setEnabled(false);
     add(getBibliographyEntryButton);
     add(outputText);
     

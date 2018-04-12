@@ -23,6 +23,27 @@ public class BookList
 
     }
 
+    public void sort ()
+    {
+        for (int pos = 0; pos < books.length; pos++)
+        {
+            // Find the smallest item remaining in the list
+            int minIndex = pos;
+            for (int i = pos; i < books.length; i++)
+            {
+                if (books[i].compareTo(books[minIndex]) < 0)    // if books[i] comes before books[minIndex]
+                {
+                    minIndex = i;
+                }
+            }
+            
+            // Move smallest to the front; swap with Book currently there
+            Book temp = books[pos];
+            books[pos] = books[minIndex];
+            books[minIndex] = temp;
+        }
+    }
+    
 
     public String toString()
     {
@@ -33,5 +54,20 @@ public class BookList
         }
         return ans;
     }
+
+    public String getBibliography()
+    {
+        this.sort();
+        String ans = "";
+        for (Book b : books)
+        {
+            // ans = ans + b.getBibliographyEntry () + "\n";
+            ans = ans + b.toString () + "\n";
+        }
+        return ans;
+    }
+    
+    
+    
     
 }
