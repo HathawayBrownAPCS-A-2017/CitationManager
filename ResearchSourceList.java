@@ -35,6 +35,18 @@ public class ResearchSourceList
         sourceList.add(new ReferenceBook ("Dahl", "Roald", "Charlie and the Chocolate Factory", "Alfred A. Knopf", 1964));
         sourceList.add(new ReferenceBook ("Dahl", "Roald", "Matilda", "Penguin", 1988));
         sourceList.add(new ReferenceBook ("Hurston", "Zora Neale", "Their Eyes Were Watching God", "J. B. Lippincott", 1937));
+        
+        sourceList.add(new ResearchWebsite ("Wikipedia", "Daleks", "https://en.wikipedia.org/wiki/Dalek", 2018, "15 April 2018"));
+        sourceList.add(new ResearchWebsite ("Wikipedia", "The Sinking of the RMS Titanic", 
+                    "https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic", 2018, "13 April 2018"));
+        sourceList.add(new ResearchWebsite ("United Press International", "All-Female Flight Crew Engineers Aviation First",
+                    "https://www.upi.com/Archives/1986/12/30/All-female-flight-crew-engineers-aviation-first/4766536302800/",
+                    1986, "12 March 2018"));
+                    
+        sourceList.add(new JournalArticle ("Einstein", "Albert", "Annalen der Physik", 
+                   "Wiley-VCH", 1905, "vol. 4", 891, "On the Electrodynamics of Moving Bodies", 17));
+        
+        this.sort();
     }
     
     /** 
@@ -50,9 +62,13 @@ public class ResearchSourceList
      */
     public String toString()
     {
-        String ans = "ReseachSourceList.toString not yet implemented \n" +
-            "There are " + getNumItems() + " Sources in the list.";
-        // You write this part.  Do it with a for-each loop.  Number each ResearchSource
+        String ans = "";
+        int sourceNum = 0;
+        for (ResearchSource r : sourceList)
+        {
+            ans += sourceNum + "\t" + r.toString() + "\n";
+            sourceNum++;
+        }
         return ans;
     }
     
@@ -80,7 +96,14 @@ public class ResearchSourceList
     }
     
     
-    public String getBibliography()
+    public String getBibliography (int n)
+    {
+        ResearchSource s = sourceList.get(n);
+        return s.getBibliographyEntry();
+    }
+    
+    
+    public String getFullBibliography()
     {
         this.sort();
         String ans = "";

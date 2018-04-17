@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Website
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Website\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=aut\ name\ link\ year
+comment1.target=Website(java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getSiteName()
+comment3.params=
+comment3.target=java.lang.String\ getLink()
+comment4.params=
+comment4.target=int\ getYear()
+comment5.params=
+comment5.target=java.lang.String\ getAuthor()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

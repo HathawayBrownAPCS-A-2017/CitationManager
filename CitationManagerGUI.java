@@ -36,6 +36,7 @@ public class CitationManagerGUI extends JPanel
   private JComboBox<Integer> selectSourceCombo;
   private JButton getNoteButton;
   private JButton getBibliographyEntryButton;
+  private JButton getFullBibliographyButton;
   
   // Output area
   private JTextArea listArea;
@@ -87,8 +88,10 @@ public class CitationManagerGUI extends JPanel
     getNoteButton.addActionListener(new getNoteButtonListener());
     getBibliographyEntryButton = new JButton("Get Bibliography Entry");
     getBibliographyEntryButton.addActionListener(new getBibliographyEntryButtonListener());
+    getFullBibliographyButton = new JButton ("Get Full Bibliography");
+    getFullBibliographyButton.addActionListener(new getFullBibliographyButtonListener());
     
-    outputText = new JTextField(40);
+    outputText = new JTextField(60);
     
    
     // Lay Out the Tools on a JFrame
@@ -103,9 +106,10 @@ public class CitationManagerGUI extends JPanel
     add(selectLabel);
     //add(selectSourceText);
     add(selectSourceCombo);
-    add(getNoteButton);
-    getNoteButton.setEnabled(false);
+    //add(getNoteButton);
+    //getNoteButton.setEnabled(false);
     add(getBibliographyEntryButton);
+    add(getFullBibliographyButton);
     add(outputText);
     
     listArea.setText(sourceList.toString());
@@ -159,7 +163,7 @@ public class CitationManagerGUI extends JPanel
     }
   }
 
-  // When the user clicks the "Get Note" button
+  // When the user clicks the "Get Bibliograph Entry" button
   private class getBibliographyEntryButtonListener
       implements ActionListener
   {
@@ -168,16 +172,25 @@ public class CitationManagerGUI extends JPanel
       int sourceNum = getSourceNum();
       
       outputText.setText(null);
-      outputText.setText("Pressed Get Bibliography Entry for Source #" + sourceNum);
+      outputText.setText(sourceList.getBibliography (sourceNum));
     }
   }
-    
+      // When the user clicks the "Get Full Bibliography" button
+  private class getFullBibliographyButtonListener
+      implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      BibliographyWindow bw = new BibliographyWindow (sourceList.getFullBibliography());
+    }
+  }
+   
   public static void main(String[] args) 
   {
     JFrame window = new JFrame("Citation Management");
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     window.getContentPane().add(new CitationManagerGUI());
-    window.setBounds(100,100,50 * CitationManagerGUI.FONT_SIZE, 40 * CitationManagerGUI.FONT_SIZE);
+    window.setBounds(200,100,50 * CitationManagerGUI.FONT_SIZE, 40 * CitationManagerGUI.FONT_SIZE);
     window.setVisible(true);
   }
  
